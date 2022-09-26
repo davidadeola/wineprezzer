@@ -1,7 +1,7 @@
 import React from "react";
 
 const LocationInfo = () => {
-  return <div>LocationInfo</div>;
+  return <>LocationInfo</>;
 };
 
 export default LocationInfo;
