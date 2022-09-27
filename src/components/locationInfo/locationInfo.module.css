@@ -1,0 +1,42 @@
+.locationInfo {
+  width: 20em;
+  background-color: #ffffff;
+  box-shadow: 4px 4px 24px #00000022;
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+  justify-content: space-between;
+  position: absolute;
+  border-radius: 1.5em;
+  padding: 1em;
+  pointer-events: none;
+}
+
+.locationInfo h2 {
+  color: #FC7C6C;
+  pointer-events: none;
+}
+
+.location {
+  display: flex;
+  gap: .6em;
+  pointer-events: all;
+}
+
+.phone {
+  display: flex;
+  gap: .6em;
+  text-decoration: none;
+  color: #000000;
+  pointer-events: all;
+}
+
+.phone:hover {
+  color: #FC7C6C;
+}
+
+.websiteLink {
+  color: #FC7C6C;
+  margin-top: auto;
+  pointer-events: all;
+}

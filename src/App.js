@@ -3,6 +3,7 @@ import { MyMap } from "./components/map/map";
 import SideBar from "./components/sidebar/sideBar";
 
 function App() {
+  const [hoveredData, setHoveredData] = useState(null);
   const [breweries, setBreweries] = useState([]);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [activeData, setActiveData] = useState(null);
@@ -20,13 +21,58 @@ function App() {
     setBreweries(data);
   };
 
+  const handleClickListener = useCallback(() => {
+    const allPointsDiv = Array.from(
+      document.querySelectorAll(".pigeon-click-block")
+    );
+    const allPointsChildren = Array.from(
+      document.querySelectorAll(".pigeon-click-block *")
+    );
+    const allPointsSideBar = Array.from(document.querySelectorAll("#sideNav"));
+
+    const allPoints = [
+      ...allPointsDiv,
+      ...allPointsChildren,
+      ...allPointsSideBar,
+    ];
+
+    const clickListener = (event) => {
+      if (allPoints.includes(event.target) === false) {
+        setHoveredData(null);
+        setActiveData(null);
+      }
+    };
+
+    window.addEventListener("click", clickListener);
+
+    return () => {
+      window.removeEventListener("click", clickListener);
+    };
+  }, []);
+
   const initializeApp = useCallback(async () => {
     await fetchData();
-  }, []);
+    setTimeout(() => {
+      handleClickListener();
+    }, 500);
+  }, [handleClickListener]);
 
   useEffect(() => {
     initializeApp();
   }, [initializeApp]);
+
+  const showHoverInfo = (brew, e) => {
+    if (activeData) return;
+    if (hoveredData) {
+      setHoveredData(brew);
+    } else {
+      setTimeout(() => setHoveredData(brew), 500);
+    }
+    const {
+      event: { pageX, pageY },
+    } = e;
+    setPosition({ x: pageX, y: pageY });
+  };
 
   const showFocusInfo = (brew, e) => {
     setActiveData(brew);
@@ -39,7 +85,17 @@ function App() {
   return (
     <>
       <SideBar />
-      <MyMap {...{ breweries, activeData, showFocusInfo, position }} />
+      <MyMap
+        {...{
+          breweries,
+          hoveredData,
+          activeData,
+          setActiveData,
+          position,
+          showHoverInfo,
+          showFocusInfo,
+        }}
+      />
     </>
   );
 }

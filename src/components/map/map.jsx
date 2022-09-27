@@ -1,15 +1,19 @@
 import React from "react";
 import { Map, Marker } from "pigeon-maps";
+import LocationInfo from "../locationInfo/locationInfo";
 
-export function MyMap({ breweries }) {
+export function MyMap({
+  breweries,
+  hoveredData,
+  activeData,
+  setActiveData,
+  position,
+  showHoverInfo,
+  showFocusInfo,
+}) {
   return (
     <>
-      <Map
-        height={700}
-        defaultCenter={[40.879, 4.6997]}
-        defaultZoom={3}
-        minZoom={2}
-      >
+      <Map defaultCenter={[40.879, 4.6997]} defaultZoom={3} minZoom={2}>
         {breweries?.map((brewery, index) => (
           <Marker
             key={index}
@@ -19,9 +23,24 @@ export function MyMap({ breweries }) {
               parseInt(brewery?.latitude) || 50.879,
               parseInt(brewery?.longitude) || 4.6997,
             ]}
+            onMouseOver={(e) => showHoverInfo(brewery, e)}
+            onMouseOut={(e) => showHoverInfo(!brewery, e)}
+            onClick={(e) => {
+              showFocusInfo(brewery, e);
+              setActiveData(brewery);
+            }}
           />
         ))}
       </Map>
+      {hoveredData && (
+        <LocationInfo
+          {...{
+            hoveredData,
+            activeData,
+            position,
+          }}
+        />
+      )}
     </>
   );
 }
