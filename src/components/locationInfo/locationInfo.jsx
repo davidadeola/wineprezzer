@@ -11,7 +11,17 @@ const LocationInfo = ({ position, activeData, hoveredData }) => {
         className={styles.locationInfo}
         style={{ top: position?.y, left: position?.x }}
       >
-        <h2>{info?.name}</h2>
+        <h2>
+          {info?.name}{" "}
+          <div className={styles.flag}>
+            {info?.country && (
+              <img
+                src={`https://countryflagsapi.com/png/${info?.country}`}
+                alt=""
+              />
+            )}
+          </div>
+        </h2>
         <div className={styles.location}>
           <div className={styles.icon}>
             <Location />

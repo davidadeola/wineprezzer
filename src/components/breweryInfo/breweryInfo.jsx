@@ -41,7 +41,7 @@ function BreweryInfo({ activeData }) {
             </span>
             Phone:
           </h3>
-          <span>{activeData?.phone}</span>
+          <a href={`tel:${activeData?.phone}`}>{activeData?.phone}</a>
         </div>
         <div className={styles.infoContainer}>
           <h3>Website:</h3>
@@ -59,6 +59,14 @@ function BreweryInfo({ activeData }) {
             Updated: {new Date(activeData?.updated_at).toLocaleString()}{" "}
             Created: {new Date(activeData?.created_at).toLocaleString()}
           </span>
+        </div>
+        <div className={styles.flag}>
+          {activeData?.country && (
+            <img
+              src={`https://countryflagsapi.com/png/${activeData?.country}`}
+              alt=""
+            />
+          )}
         </div>
         {/**
          * brewery_type

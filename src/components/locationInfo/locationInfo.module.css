@@ -40,3 +40,17 @@
   margin-top: auto;
   pointer-events: all;
 }
+
+.flag {
+  width: 1.7em;
+  height: fit-content;
+  vertical-align: middle;
+  display: inline-flex;
+  border-radius: .1em;
+  overflow: hidden;
+}
+
+.flag img {
+  width: 100%;
+  height: 100%;
+}

@@ -120,13 +120,15 @@ used "module.css" because it is faster, and makes the code hard to break
 ## Challenges faced
 
 - Had challenges making the UI more modern because there are no image URL from the API
+- React strict mode causing double render
 -
 
-## Thoughts on API
+## Thoughts on API and Map
 
-- Though the API documentation is great, but it should have Image URL to help with more suitable User Interface
-
--
+- Though the Brewery API documentation is great, it should have Image URLs to help with a more suitable User Interface.
+- The Map API contains limited map tiles, would prefer a dark mode map tile offered out of the box.
+- onMouseOut event on Map doesn't work properly.
+- The Markers on the Map API does not render properly on IOS devices.
 
 ## Run Locally
 
