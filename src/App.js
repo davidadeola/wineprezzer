@@ -14,10 +14,6 @@ function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeNav, setActiveNav] = useState("breweries");
 
-  /**
-   * Fetching data from the breweries API and initializing it
-   */
-
   const fetchData = async () => {
     const response = await fetch(
       "https://api.openbrewerydb.org/breweries?per_page=50"

@@ -6,13 +6,13 @@ import BreweryInfo from "../breweryInfo/breweryInfo";
 import BreweryList from "../breweryList/breweryList";
 import useDidMountEffect from "../../hooks/useDidMountEffect";
 
-const SideBar = ({
+function SideBar({
   breweries,
   activeData,
   setActiveData,
   activeNav,
   setActiveNav,
-}) => {
+}) {
   const [expanded, setExpanded] = useState(false);
 
   useDidMountEffect(() => {
@@ -66,6 +66,6 @@ const SideBar = ({
       </nav>
     </>
   );
-};
+}
 
 export default SideBar;
