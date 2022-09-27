@@ -38,6 +38,10 @@ const SideBar = ({
           <a href="/" className={styles.logo}>
             <img src={Logo} alt="WinePrezzer" />
           </a>
+          <h4>
+            This is an Application that shows list of breweries and their
+            location
+          </h4>
           <div className={styles.navigation}>
             <button
               className={activeNav === "info" ? styles.activeNav : ""}
