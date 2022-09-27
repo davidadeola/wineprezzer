@@ -1,13 +1,17 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { MyMap } from "./components/map/map";
+import SearchBar from "./components/searchBar/searchBar";
 import SideBar from "./components/sidebar/sideBar";
 
 function App() {
   const [hoveredData, setHoveredData] = useState(null);
+  const [activeData, setActiveData] = useState(null);
+  const [staticData, setStaticData] = useState([]);
+
   const [breweries, setBreweries] = useState([]);
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [activeData, setActiveData] = useState(null);
 
+  const [searchQuery, setSearchQuery] = useState("");
   const [activeNav, setActiveNav] = useState("breweries");
 
   /**
@@ -21,7 +25,21 @@ function App() {
     const data = await response.json();
 
     setBreweries(data);
+    setStaticData(data);
   };
+
+  const fetchSearchedData = useCallback(async () => {
+    if (!searchQuery) {
+      setBreweries(staticData);
+      return;
+    }
+    const response = await fetch(
+      `https://api.openbrewerydb.org/breweries/search?query=${searchQuery}`
+    );
+    const data = await response.json();
+
+    setBreweries(data);
+  }, [searchQuery, staticData]);
 
   const handleClickListener = useCallback(() => {
     const allPointsDiv = Array.from(
@@ -63,6 +81,10 @@ function App() {
     initializeApp();
   }, [initializeApp]);
 
+  useEffect(() => {
+    fetchSearchedData();
+  }, [searchQuery, fetchSearchedData]);
+
   const showHoverInfo = (brew, e) => {
     if (activeData) return;
     if (hoveredData) {
@@ -86,6 +108,7 @@ function App() {
 
   return (
     <>
+      <SearchBar {...{ setSearchQuery, setActiveNav }} />
       <SideBar
         {...{ breweries, activeData, setActiveData, activeNav, setActiveNav }}
       />
