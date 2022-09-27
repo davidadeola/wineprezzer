@@ -8,6 +8,8 @@ function App() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [activeData, setActiveData] = useState(null);
 
+  const [activeNav, setActiveNav] = useState("breweries");
+
   /**
    * Fetching data from the breweries API and initializing it
    */
@@ -84,7 +86,9 @@ function App() {
 
   return (
     <>
-      <SideBar />
+      <SideBar
+        {...{ breweries, activeData, setActiveData, activeNav, setActiveNav }}
+      />
       <MyMap
         {...{
           breweries,
