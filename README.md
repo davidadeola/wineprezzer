@@ -83,17 +83,50 @@ npm install --save pigeon-maps
 
 JavaScript, React, CSS (CSS Modules), API.
 
-## Lessons Learned
+### Logo
 
 ![Logo](https://res.cloudinary.com/devkp5za2/image/upload/v1664244174/wineprezzer-logo_fb01j0.png)
 
-## Optimizations
-
 ## Roadmap
 
-- Additional browser support
+- Create react App
 
-- Add more integrations
+- Create Folder and File structure
+
+- Install Pigeon map
+
+- Fecth Brewery API and remote location to pigeon map
+
+- Add onHover state and click state to display information
+
+- Create Sidebar and add list of breweries and information of breweries
+
+- Create sidebar Header content
+
+- Implement Search functionality for Breweries
+
+- Integrate Sidebar with Map location
+
+- Document process in ReadMe
+
+- Add License
+
+## Design choices
+
+Color choice is a neutral color to make user friendly Interface.
+Used React because it creates more reactive response and it is faster.
+used "module.css" because it is faster, and makes the code hard to break
+
+## Challenges faced
+
+- Had challenges making the UI more modern because there are no image URL from the API
+-
+
+## Thoughts on API
+
+- Though the API documentation is great, but it should have Image URL to help with more suitable User Interface
+
+-
 
 ## Run Locally
 
