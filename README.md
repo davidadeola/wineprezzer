@@ -27,10 +27,6 @@ Thereby giving you extra information about the selected Brewery.
 
 #### Search for breweries based on a search term.
 
-## Authors
-
-- [@davidadeola](https://www.github.com/davidadeola)
-
 ## Demo
 
 https://wineprezzer.netlify.app/
